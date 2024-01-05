@@ -1,1 +1,1 @@
-# SoftUni-MySQL-
+Solutions of SoftUni MySQL course.
