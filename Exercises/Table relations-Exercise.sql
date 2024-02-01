@@ -1,4 +1,4 @@
-01. One-To-One Relationship
+#01. One-To-One Relationship
 CREATE TABLE `passports`(
 `passport_id` INT PRIMARY KEY AUTO_INCREMENT,
 `passport_number` VARCHAR (50) UNIQUE);
@@ -23,7 +23,7 @@ VALUES
     (2, 'Tom', 56100.00, 103), 
     (3, 'Yana', 60200.00, 101); 
 
-02. One-To-Many Relationship
+#02. One-To-Many Relationship
 CREATE TABLE `manufacturers`(
 `manufacturer_id` INT PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR (50),
@@ -52,7 +52,7 @@ VALUES
     (105, 'Model 3', 2),
     (106, 'Nova', 3); 
 
-03. Many-To-Many Relationship
+#03. Many-To-Many Relationship
 CREATE TABLE `students`(
 `student_id` INT PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR (50));
@@ -96,7 +96,7 @@ VALUES
     (2, 102),
     (2, 103);
 
-04. Self-Referencing
+#04. Self-Referencing
 CREATE TABLE `teachers` (
     `teacher_id` INT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(50),
@@ -116,7 +116,7 @@ VALUES
 FOREIGN KEY (`manager_id`)
 REFERENCES `teachers`(`teacher_id`);
 
-05. Online Store Database
+#05. Online Store Database
 CREATE TABLE `item_types`(
 `item_type_id` INT(11) PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR (50));
@@ -168,7 +168,7 @@ ADD CONSTRAINT fk_c_c
 FOREIGN KEY (`city_id`)
 REFERENCES `cities`(`city_id`);
 
-06. University Database
+#06. University Database
 CREATE TABLE `subjects`(
 `subject_id` INT(11) PRIMARY KEY AUTO_INCREMENT,
 `subject_name` VARCHAR (50));
@@ -210,11 +210,10 @@ FOREIGN KEY (`student_id`)
 REFERENCES `students`(`student_id`)
 );
 
-09. Peaks in Rila
+#09. Peaks in Rila
 SELECT m.`mountain_range`,p.`peak_name`, 
 p.`elevation` AS `peak_elevation` FROM `mountains` m
 JOIN `peaks` p
 ON m.`id`= p.`mountain_id`
 WHERE `mountain_range` = 'Rila'
 ORDER BY `peak_elevation` DESC;
-05. Online Store Database

@@ -1,4 +1,4 @@
-1. Count Employees by Town
+#1. Count Employees by Town
 CREATE FUNCTION ufn_count_employees_by_town(town_name VARCHAR (50))
 RETURNS INT
 DETERMINISTIC
@@ -11,7 +11,7 @@ SET count := (SELECT COUNT(*) FROM `employees` AS e
     RETURN count;
 END;
 
-2. Employees Promotion
+#2. Employees Promotion
 CREATE PROCEDURE usp_raise_salaries(department_name VARCHAR(50))
 BEGIN
 UPDATE `employees` as E
@@ -20,7 +20,7 @@ SET `salary` = `salary` * 1.05
 WHERE department_name = d.`name`;
 END;
 
-3. Employees Promotion By ID
+#3. Employees Promotion By ID
 CREATE PROCEDURE usp_raise_salary_by_id(empoyee_id INT)
 BEGIN
 START TRANSACTION;
@@ -34,7 +34,7 @@ WHERE `employee_id` = empoyee_id;
 END IF;
 END;
 
-4. Triggered
+#4. Triggered
 CREATE TABLE `deleted_employees`(
 `employee_id` INT AUTO_INCREMENT PRIMARY KEY,
 `first_name` VARCHAR (50),

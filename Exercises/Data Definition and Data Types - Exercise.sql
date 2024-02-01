@@ -1,4 +1,4 @@
-1.Create Tables
+#1.Create Tables
 CREATE TABLE `minions`(
 `id` INT NOT NULL AUTO_INCREMENT,
 `name` VARCHAR (45) NOT NULL,
@@ -10,14 +10,14 @@ CREATE TABLE `towns` (
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`town_id`));
 
-2.Alter Minions Table
+#2.Alter Minions Table
 ALTER TABLE `minions`
 ADD COLUMN `town_id` INT NOT NULL,
 ADD CONSTRAINT fk_minions_towns
 FOREIGN KEY (`town_id`)
 REFERENCES `towns` (`id`);
 
-3.Insert Records in Both Tables
+#3.Insert Records in Both Tables
 INSERT INTO `towns`(`id`, `name`)
 VALUES (1, 'Sofia'), (2, "Plovdiv"), (3, "Varna");
   
@@ -26,14 +26,14 @@ VALUES (1, "Kevin", 22, 1),
         (2, "Bob", 15, 3),
         (3, "Steward", NULL, 2);
 
-4.Truncate Table Minions
+#4.Truncate Table Minions
 TRUNCATE `minions`;
 
-5.Drop All Tables
+#5.Drop All Tables
 DROP TABLE `minions`;  
 DROP TABLE `towns`;
 
-6.Create Table People
+#6.Create Table People
 CREATE TABLE `people`(
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR (200) NOT NULL,
@@ -51,7 +51,7 @@ VALUES 	("Ivan", "m", DATE (NOW())),
 		("Ivan", "m", DATE (NOW())),
 		("Ivan", "m", DATE (NOW()));
 
-7.Create Table Users
+#7.Create Table Users
 CREATE TABLE `users`(
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `username` VARCHAR (30) NOT NULL,
@@ -67,23 +67,23 @@ VALUES 	("Ivan", "m"),
 		("Ivan", "m"),
 		("Ivan", "m");
 
-8.Change Primary Key
+#8.Change Primary Key
 ALTER TABLE `users`
 DROP PRIMARY KEY,
 ADD PRIMARY KEY `pk_users` (`id`, `username`);
 
-9.Set Default Value of a Field
+#9.Set Default Value of a Field
 ALTER TABLE `users`
 MODIFY COLUMN `last_login_time` DATETIME DEFAULT NOW();
 
-10.Set Unique Field
+#10.Set Unique Field
 ALTER TABLE `users`
 DROP PRIMARY KEY,
 ADD CONSTRAINT pk_users
 PRIMARY KEY (`id`),
 MODIFY COLUMN `username` VARCHAR (30) UNIQUE;
 
-11.Movies Database
+#11.Movies Database
 CREATE TABLE `directors`(
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `director_name` VARCHAR (30) NOT NULL,
@@ -139,7 +139,7 @@ VALUES ('ivan', '1'),
        ('d', '4'),
        ('igavan', '5');
 
-12. Car Rental Database
+#12. Car Rental Database
 CREATE TABLE `categories`(
 `id` INT PRIMARY KEY AUTO_INCREMENT,
 `category` VARCHAR (30) NOT NULL,
@@ -221,7 +221,7 @@ VALUES (1),
        (2),
        (333); 
 
-13. Basic Insert
+#13. Basic Insert
 INSERT INTO `towns` (`name`)
 VALUES ("Sofia"), ("Plovdiv"), ("Varna"), ("Burgas");
  
@@ -237,12 +237,12 @@ VALUES
 ('Georgi', 'Terziev', 'Ivanov', 'CEO', 2, '2007-12-09', 3000.00),
 ('Peter', 'Pan', 'Pan', 'Intern', 3, '2016-08-28', 599.88);
 
-14. Basic Select All Fields
+#14. Basic Select All Fields
 SELECT * FROM `towns`;
 SELECT * FROM `departments`;
 SELECT * FROM `employees`;
 
-15. Basic Select All Fields and Order Them
+#15. Basic Select All Fields and Order Them
 SELECT * FROM `towns`
 ORDER BY `name`;
 SELECT * FROM `departments`
@@ -250,7 +250,7 @@ ORDER BY `name`;
 SELECT * FROM `employees`
 ORDER BY `salary` DESC;
 
-16. Basic Select Some Fields
+#16. Basic Select Some Fields
 SELECT `name` FROM `towns`
 ORDER BY `name`;
 SELECT `name` FROM `departments`
@@ -258,7 +258,7 @@ ORDER BY `name`;
 SELECT  `first_name`, `last_name`,`job_title`,`salary` FROM `employees`
 ORDER BY `salary` DESC;
 
-17. Increase Employees Salary
+#17. Increase Employees Salary
 UPDATE `employees`
 SET `salary` = `salary` * 1.10;
 SELECT `salary` FROM `employees`;

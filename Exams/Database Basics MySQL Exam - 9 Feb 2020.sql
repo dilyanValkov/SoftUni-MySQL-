@@ -1,4 +1,3 @@
-#01
 CREATE TABLE `countries` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(45) NOT NULL
@@ -87,7 +86,6 @@ FROM
     WHERE p.`age` >= 45
 );
 
-#03
 UPDATE `coaches` AS c 
 SET 
     c.`coach_level` = c.`coach_level` + 1
@@ -102,14 +100,12 @@ WHERE
 DELETE FROM `players` AS p
 WHERE p.`age` >= 45;
 
-#05
 SELECT 
     `first_name`, `age`, `salary`
 FROM
     `players`
 ORDER BY `salary` DESC;
 
-#06
 SELECT 
     p.`id`,
     CONCAT_WS(' ', `first_name`, `last_name`) AS `full_name`,
@@ -126,7 +122,6 @@ WHERE
         AND sd.`strength` > 50)
 ORDER BY `salary` , `age`;
 
-#07
 SELECT 
     t.`name` AS 'team_name',
     t.`established`,
@@ -139,7 +134,6 @@ FROM
 GROUP BY t.`id`
 ORDER BY `players_count` DESC , `fan_base` DESC;
 
-#08
 SELECT 
     MAX(sd.`speed`) AS 'max_speed', t.`name` AS 'town_name'
 FROM
@@ -157,7 +151,6 @@ WHERE
 GROUP BY t.`name`
 ORDER BY max_speed DESC , town_name;
 
-#09
 SELECT 
     c.`name`,
     COUNT(p.`id`) AS 'total_count_of_players',
