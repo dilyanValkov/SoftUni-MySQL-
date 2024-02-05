@@ -127,7 +127,45 @@ HAVING students_count >= 8
 ORDER BY students_count DESC , universotety_name DESC;
 
 #09. Price rankings
+SELECT 
+    u.`name`,
+    c.`name`,
+    u.`address`,
+    (CASE
+        WHEN u.`tuition_fee` < 800 THEN 'cheap'
+        WHEN u.`tuition_fee` BETWEEN 800 AND 1200 THEN 'normal'
+        WHEN u.`tuition_fee` BETWEEN 1200 AND 2500 THEN 'high'
+        ELSE 'expensive'
+    END) AS 'price_rank',
+    u.`tuition_fee`
+FROM
+    `universities` AS u
+        JOIN
+    `cities` AS c ON u.`city_id` = c.`id`
+ORDER BY u.`tuition_fee`;
 
+#10. Average grades
+DELIMITER %%
+CREATE FUNCTION  udf_average_alumni_grade_by_course_name(course_name VARCHAR(60)) 
+RETURNS DECIMAL(19,2)
+DETERMINISTIC
+BEGIN
+RETURN (SELECT AVG(sc.`grade`) AS 'average_alumni_grade' FROM `courses` AS c
+JOIN `students_courses` AS sc ON c.`id` = sc.`course_id`
+JOIN `students` AS s ON s.`id` = sc.`student_id`
+WHERE c.`name` = course_name AND s.`is_graduated` = 1);
+END%%
+
+#11. Graduate students
+DELIMITER %%
+CREATE PROCEDURE udp_graduate_all_students_by_year(year_started INT)
+BEGIN
+UPDATE `students` AS s
+JOIN `students_courses` AS sc ON s.`id` = sc.`student_id`
+JOIN `courses` AS c ON c.`id` = sc.`course_id`
+SET s.`is_graduated` = 1
+WHERE YEAR(c.`start_date`) = year_started;
+END%%
 
 
     
